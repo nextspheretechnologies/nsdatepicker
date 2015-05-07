@@ -1,0 +1,18 @@
+{
+  "name": "ns-datepicker",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "dist/index.js"
+  "ignore": [
+    ".gitignore","README.md"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "1.3.2",
+    "angular-mocks": "~1.0.5",
+    "angular-scenario": "~1.0.5",
+  },
+  "resolutions": {
+    "angular": "1.3.2"
+  }
+}
