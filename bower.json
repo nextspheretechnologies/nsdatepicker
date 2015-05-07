@@ -1,12 +1,23 @@
 {
-  "name": "ns-datepicker",
-  "license": "MIT",
+  "name": "nsdatepicker",
   "version": "1.0.0",
-  "main": "dist/index.js"
-  "ignore": [
-    ".gitignore","README.md"
+  "homepage": "https://github.com/nextspheretechnologies/nsdatepicker",
+  "authors": [
+    "pdr@nextsphere.com"
   ],
-  "dependencies": {},
+  "description": "angular basic datepicker",
+  "main": "dist/index.js",
+  "keywords": [
+    "datepicker"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "devDependencies": {
     "angular": "1.3.2",
     "angular-mocks": "~1.0.5",
