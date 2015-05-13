@@ -102,6 +102,26 @@
     }
     return hours;
   }
+  
+  function calculateLoggedHours(hours){
+        hours = hours.toString();
+        var enteredHours = hours.split('.')[0];
+        var enteredMinutes = hours.split('.')[1];
+        if(enteredMinutes){
+            enteredMinutes = (enteredMinutes.length === 1)?enteredMinutes+='0':enteredMinutes;
+        }else{
+            enteredMinutes = '00';
+        }
+        enteredHours = parseInt(enteredHours);
+        enteredMinutes = parseInt(enteredMinutes);
+        if(enteredMinutes >= 60){
+            enteredHours += 1;
+            enteredMinutes = enteredMinutes - 60;
+        }
+        var loggedHours = enteredHours + '.'+enteredMinutes;
+        loggedHours = parseFloat(loggedHours);
+        return loggedHours;
+  } 
 
   function bindTimeEntries(weeks,data,scope) {
     if(!data) return;
@@ -125,7 +145,9 @@
         }
         if(effort > 0){//to get day wise total effort
           //TODO:: need to calculate the total effort
+          effort = calculateLoggedHours(effort);
           weeklyTotalEffort+=effort;
+          weeklyTotalEffort = calculateLoggedHours(weeklyTotalEffort);
           week.push({day:new Date(weeks[j][i].day),effort:effort,isDate:true});
         }else if(weeks[j][i].isDate){
           week.push({day:new Date(weeks[j][i].day),isDate:true});
@@ -135,6 +157,7 @@
       }
       weekEntries.push(week);
       monthlyTotalEffort+=weeklyTotalEffort;
+      monthlyTotalEffort = calculateLoggedHours(monthlyTotalEffort);		
     }
     scope.grandTotal = monthlyTotalEffort;
     return weekEntries;
