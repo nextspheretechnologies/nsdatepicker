@@ -361,17 +361,13 @@
             scope.$watch(watch, update);
             if(scope.minDate) {
               scope.$watch('minDate', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
-                  scope.min = newValue;
-                }
+                scope.min = newValue;
 
               });
             }
             if(scope.maxDate){
                 scope.$watch('maxDate',function(newValue,oldValue){
-                  if(newValue !== oldValue){
-                    scope.max = newValue;
-                  }
+                  scope.max = newValue;
 
                 });
             }
