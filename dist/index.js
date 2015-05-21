@@ -102,7 +102,7 @@
     }
     return hours;
   }
-  
+
   function calculateLoggedHours(hours){
         hours = hours.toString();
         var enteredHours = hours.split('.')[0];
@@ -121,7 +121,7 @@
         var loggedHours = enteredHours + '.'+enteredMinutes;
         loggedHours = parseFloat(loggedHours);
         return loggedHours;
-  } 
+  }
 
   function bindTimeEntries(weeks,data,scope) {
     if(!data) return;
@@ -165,7 +165,7 @@
       }
       weekEntries.push(week);
       monthlyTotalEffort+=weeklyTotalEffort;
-      monthlyTotalEffort = calculateLoggedHours(monthlyTotalEffort);		
+      monthlyTotalEffort = calculateLoggedHours(monthlyTotalEffort);
     }
     scope.grandTotal = monthlyTotalEffort;
     return weekEntries;
@@ -249,7 +249,6 @@
             };
 
 	    scope.getEntries = function(startDate,endDate){
-                if(!(scope.isDisabledDate(startDate) && scope.isDisabledDate(endDate))){
                     if(!scope.isSameMonth(startDate)){
                         startDate = new Date(startDate.getFullYear(),startDate.getMonth()+1,1);
                     }
@@ -257,9 +256,9 @@
                     if(!scope.isSameMonth(endDate)){
                         endDate = new Date(endDate.getFullYear(),endDate.getMonth(),0);
                     }
-
-                    scope.$emit('weekEntries', {startDate:startDate,endDate:endDate});
-                }
+                    if(!(scope.isDisabledDate(startDate) && scope.isDisabledDate(endDate))){
+                        scope.$emit('weekEntries', {startDate:startDate,endDate:endDate});
+                    }
 
             };
 
