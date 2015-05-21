@@ -240,6 +240,21 @@
               }
             };
 
+	    scope.getEntries = function(startDate,endDate){
+                if(!(scope.isDisabledDate(startDate) && scope.isDisabledDate(endDate))){
+                    if(!scope.isSameMonth(startDate)){
+                        startDate = new Date(startDate.getFullYear(),startDate.getMonth()+1,1);
+                    }
+
+                    if(!scope.isSameMonth(endDate)){
+                        endDate = new Date(endDate.getFullYear(),endDate.getMonth(),0);
+                    }
+
+                    scope.$emit('weekEntries', {startDate:startDate,endDate:endDate});
+                }
+
+            };
+
             scope.setDate = function (date) {
               var condition = false;
               var present = new Date();
@@ -906,9 +921,9 @@
       "      <tr ng-switch-when=\"month\"  ng-repeat=\"week in weeks\">\n" +
       "        <td style=\"border:1px solid #ccc;\" ng-repeat=\"day in week\">\n" +
       "          <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
-      "            ng-class=\"{'now':isNow(day.day),'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
+      "            ng-class=\"{'now':isNow(day.day), 'date':day.isDate, 'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
       "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\">{{day.day}}</span>\n" +
-      "        <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
+      "        <span ng-if=\"day.isDate\" ng-class=\"effort\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
       "          <span ng-if=\"!day.isDate\" >{{day.day}}</span>"  +
       "        </td>\n" +
       "      </tr>\n" +
