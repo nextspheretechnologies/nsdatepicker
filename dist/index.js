@@ -923,8 +923,8 @@
       "          <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
       "            ng-class=\"{'now':isNow(day.day), 'date':day.isDate, 'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
       "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\">{{day.day}}</span>\n" +
-      "        <span ng-if=\"day.isDate\" ng-class=\"effort\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
-      "          <span ng-if=\"!day.isDate\" >{{day.day}}</span>"  +
+      "        <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
+      "          <span ng-if=\"!day.isDate\" ng-class=\"effort\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\">{{day.day}}</span>"  +
       "        </td>\n" +
       "      </tr>\n" +
       "      <tr ng-switch-when=\"month\"><td colspan='2'></td><td colspan='5' class='text-right'>Total for {{date|date:\" MMMM yyyy\"}}:</td></td><td>{{grandTotal}}</td></tr>"+
