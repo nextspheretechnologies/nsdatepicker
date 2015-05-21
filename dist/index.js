@@ -201,8 +201,8 @@
             }
 
             if(attrs.mode){
-              scope.isNextEnabled = (attrs.mode !== 'day' && attrs.mode !== 'month');
-              scope.isPrevEnabled = (attrs.mode !== 'day'  && attrs.mode !== 'month');
+              scope.isNextEnabled = (attrs.mode !== 'week' && attrs.mode !== 'month');
+              scope.isPrevEnabled = (attrs.mode !== 'week'  && attrs.mode !== 'month');
             }else{
               scope.isNextEnabled = true;
               scope.isPrevEnabled = true;
@@ -385,7 +385,7 @@
             scope.next = function (delta) {
               var condition = true;
 
-              if(attrs.mode && (attrs.mode === 'day' || attrs.mode === 'month')){
+              if(attrs.mode && (attrs.mode === 'week' || attrs.mode === 'month')){
                 condition = scope.isNextEnabled;
               }
               if(scope.max && condition && (scope.max >= scope.date)){
@@ -898,7 +898,7 @@
       "      </tr>{{mode}}\n" +
       "      <tr ng-switch=\"pickerMode\">\n" +
       "        <th ng-switch-when=\"month\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day }}</th>\n" +
-      "        <th ng-switch-when=\"day\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day|date:\"EEE\" }}</th>\n" +
+      "        <th ng-switch-when=\"week\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day|date:\"EEE\" }}</th>\n" +
       "        <th ng-switch-when=\"datepickermode\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day|date:\"EEE\" }}</th>\n" +
       "      </tr>\n" +
       "      </thead>\n" +
@@ -913,7 +913,7 @@
       "        </td>\n" +
       "      </tr>\n" +
       "      <tr ng-switch-when=\"month\"><td colspan='2'></td><td colspan='5' class='text-right'>Total for {{date|date:\" MMMM yyyy\"}}:</td></td><td>{{grandTotal}}</td></tr>"+
-      "      <tr ng-switch-when=\"day\" ng-repeat=\"week in weeks\">\n" +
+      "      <tr ng-switch-when=\"week\" ng-repeat=\"week in weeks\">\n" +
       "        <td style=\"border:1px solid #ccc;\" ng-repeat=\"day in week\">\n" +
       "          <span style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
       "            ng-class=\"{'now':isNow(day.day),'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
@@ -1034,3 +1034,4 @@
 
   }]);
 })(angular);
+
