@@ -133,6 +133,14 @@
       var weeklyTotalEffort = 0;
       for (var i = 0; i < weeks[j].length; i++) {
         var effort = 0;
+	var weekStartDate;
+        var weekEndDate;
+        if(i === 0){
+            weekStartDate = new Date(weeks[j][i].day);
+        }
+        if(i === weeks[j].length-1){
+            weekEndDate = new Date(weeks[j][i-1].day);
+        }
         for(var x=0;x<data.length;x++){
           var dateParts = data[x]._id.split('-');
           var currentDate = new Date(weeks[j][i].day);
@@ -152,7 +160,7 @@
         }else if(weeks[j][i].isDate){
           week.push({day:new Date(weeks[j][i].day),isDate:true});
         }else{
-          week.push({day:weeklyTotalEffort,isDate:false});
+          week.push({day:weeklyTotalEffort, weekStart:weekStartDate, weekEnd:weekEndDate, isDate:false});
         }
       }
       weekEntries.push(week);
@@ -289,7 +297,7 @@
                       scope.model.setFullYear(date.getFullYear());
                   }
                   scope.$emit('setDate', scope.model, scope.view);
-                  if(scope.pickerMode.toLowerCase() === 'month'){
+                  if(scope.pickerMode.toLowerCase() === 'month' && !scope.isSameMonth(date)){
                     scope.$emit('viewChanged', date);
                   }
                 }
@@ -924,14 +932,14 @@
       "            ng-class=\"{'now':isNow(day.day), 'date':day.isDate, 'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
       "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\">{{day.day}}</span>\n" +
       "        <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
-      "          <span ng-if=\"!day.isDate\" ng-class=\"effort\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\">{{day.day}}</span>"  +
+      "          <span ng-if=\"!day.isDate\" ng-class=\"effort:!day.isDate\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\">{{day.day}}</span>"  +
       "        </td>\n" +
       "      </tr>\n" +
       "      <tr ng-switch-when=\"month\"><td colspan='2'></td><td colspan='5' class='text-right'>Total for {{date|date:\" MMMM yyyy\"}}:</td></td><td>{{grandTotal}}</td></tr>"+
       "      <tr ng-switch-when=\"week\" ng-repeat=\"week in weeks\">\n" +
       "        <td style=\"border:1px solid #ccc;\" ng-repeat=\"day in week\">\n" +
       "          <span style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
-      "            ng-class=\"{'now':isNow(day.day),'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
+      "            ng-class=\"{'now':isNow(day.day),'date':true,'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
       "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\"></span>\n" +
       "        </td>\n" +
       "      </tr>\n" +
