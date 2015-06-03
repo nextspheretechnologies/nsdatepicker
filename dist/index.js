@@ -458,7 +458,28 @@
 
             scope.prev = function (delta) {
               if(scope.min && (scope.min < scope.date)){
-                return scope.next(-delta || -1);
+                /*return scope.next(-delta || -1);*/
+		 var date = scope.date;
+		  delta = delta || -1;
+		  switch (scope.view) {
+		      case 'year':
+		      //falls through
+		      case 'month':
+		          date.setFullYear(date.getFullYear() + delta);
+		          break;
+		      case 'date':
+		          date.setMonth(date.getMonth() + delta);
+		          break;
+		      case 'hours':
+		      //falls through
+		      case 'minutes':
+		          date.setHours(date.getHours() + delta);
+		          break;
+		  }
+		  if(scope.pickerMode && scope.pickerMode.toLowerCase() === 'month'){
+		      scope.$emit('viewChanged',date);
+		  }
+		  update();	
               }else{
                 return;
               }
