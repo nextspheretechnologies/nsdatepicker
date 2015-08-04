@@ -175,11 +175,11 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #ee735b;
   *background-color: #ee905b;
-  background-image: -moz-linear-gradient(top, #ee5f5b, #ee905b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#ee905b));
-  background-image: -webkit-linear-gradient(top, #ee5f5b, #ee905b);
-  background-image: -o-linear-gradient(top, #ee5f5b, #ee905b);
-  background-image: linear-gradient(to bottom, #ee5f5b, #ee905b);
+  background-image: -moz-linear-gradient(top, #ff9500, #FF5E3A);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9500), to(#ee905b));
+  background-image: -webkit-linear-gradient(top, #ff9500, #FF5E3A);
+  background-image: -o-linear-gradient(top, #ff9500, #FF5E3A);
+  background-image: linear-gradient(to bottom, #ff9500, #FF5E3A);
   background-repeat: repeat-x;
   border-color: #ee905b #ee905b #e56218;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -227,6 +227,63 @@
 
 [date-picker] th:hover,
 [date-picker] [ng-switch-when="date"] td span:hover {
-  cursor: pointer;
-  background: #eeeeee;
+  /*cursor: pointer;
+  background: #eeeeee;*/
+}
+[date-picker] span{
+  border-radius: 0px;
+}
+[date-picker] td .hourscell{
+  display:inline-block; 
+  background-color:transparent;
+  text-align:right; 
+  font-size:9px;
+  color: #259b24;
+  height: 12px;
+  line-height: 12px;
+}
+
+[date-picker] td.datecell{
+  border:1px solid #fff;
+  background-color:transparent; 
+}
+[date-picker] td .datecellspan{
+  display:inline-block; 
+  background-color:transparent; 
+  text-align:center;
+}
+.timeentrypage [date-picker] td, .timeentrypage [date-picker] th{
+  width: 40px;
+  border-radius: 0;
+}
+.timeentrypage td.datecell{
+  border: none;
+  padding: 0px;
+  height: 40px;
+  outline: none;
+  border-radius: 0;
+}
+.timeentrypage [date-picker] td .datecellspan{
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  margin:3px 5px 0;
+  border-radius: 50%;
+}
+.timeentrypage [date-picker] tbody tr{
+  background-color: #3d3d3d;
+  color: #ffffff
+}
+.timeentrypage [date-picker] .headerweek{
+  background-color: #FF9500;
+  color: #ffffff
+}
+.timeentrypage [date-picker] .headerweek th{
+  border-radius: 0;
+  padding: 5px;
+  border: none;
+}
+.timeentrypage td.datecell .effort{
+  color: #FF3A2D
 }

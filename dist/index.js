@@ -252,11 +252,11 @@
                         };
 
                         scope.getEntries = function(startDate,endDate){
-                            if(!scope.isSameMonth(startDate)){
+                            if(!scope.isSameMonth(startDate) && (attrs.mode !== 'week')){
                                 startDate = new Date(startDate.getFullYear(),startDate.getMonth()+1,1);
                             }
 
-                            if(!scope.isSameMonth(endDate)){
+                            if(!scope.isSameMonth(endDate) && (attrs.mode !== 'week')){
                                 endDate = new Date(endDate.getFullYear(),endDate.getMonth(),0);
                             }
                             if(!(scope.isDisabledDate(startDate) && scope.isDisabledDate(endDate))){
