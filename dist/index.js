@@ -946,7 +946,7 @@
             "        <th colspan=\"5\" class=\"switch\" ng-click=\"setView('month')\">{{date|date:\"yyyy MMMM\"}}</th>\n" +
             "        <th ng-click=\"next()\">›</i></th>\n" +
             "      </tr>{{mode}}\n" +
-            "      <tr ng-switch=\"pickerMode\">\n" +
+            "      <tr class=\"headerweek\" ng-switch=\"pickerMode\">\n" +
             "        <th ng-switch-when=\"month\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day }}</th>\n" +
             "        <th ng-switch-when=\"week\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day }}</th>\n" +
             "        <th ng-switch-when=\"datepickermode\" ng-repeat=\"day in weekdays\" style=\"overflow: hidden\">{{ day|date:\"EEE\" }}</th>\n" +
@@ -954,11 +954,11 @@
             "      </thead>\n" +
             "      <tbody ng-switch=\"pickerMode\">\n" +
             "      <tr ng-switch-when=\"month\"  ng-repeat=\"week in weeks\">\n" +
-            "        <td style=\"border:1px solid #ccc;\" ng-repeat=\"day in week\">\n" +
-            "          <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
+            "        <td class=\"datecell\"  ng-repeat=\"day in week\">\n" +
+            "          <span class=\"datecellspan\" ng-if=\"day.isDate\"  \n" +
             "            ng-class=\"{'now':isNow(day.day), 'date':day.isDate, 'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
             "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\">{{day.day}}</span>\n" +
-            "        <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
+            "        <span ng-if=\"day.isDate\" class=\"hourscell\">{{day.effort}}</span>"+
             "          <span ng-if=\"!day.isDate\" ng-class=\"{'effort':!day.isDate}\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\">{{day.day}}</span>"  +
             "        </td>\n" +
             "      </tr>\n" +
@@ -969,11 +969,11 @@
                  "            ng-class=\"{'now':isNow(day.day),'date':true,'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
                  "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\"></span>\n" +
                  "        </td>\n" +*/
-            "        <td style=\"border:1px solid #ccc;\" ng-repeat=\"day in week\">\n" +
-            "          <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#ffffff; text-align:center;\" \n" +
+            "        <td class=\"datecell\" ng-repeat=\"day in week\">\n" +
+            "          <span ng-if=\"day.isDate\" class=\"datecellspan\"  \n" +
             "            ng-class=\"{'now':isNow(day.day), 'date':day.isDate, 'active':isSameDay(day.day),'disabled':isDisabledDate(day.day),'after':isAfter(day.day),'before':isBefore(day.day)}\"\n" +
             "            ng-click=\"setDate(day.day)\" ng-bind=\"day.day.getDate()\">{{day.day}}</span>\n" +
-            "        <span ng-if=\"day.isDate\" style=\"display:inline-block; background-color:#f3f3f3; text-align:right; font-size:9px;\">{{day.effort}}</span>"+
+            "        <span ng-if=\"day.isDate\" class=\"hourscell\">{{day.effort}}</span>"+
             "          <span ng-if=\"!day.isDate\" ng-class=\"{'effort':!day.isDate}\" ng-click=\"getEntries(day.weekStart,day.weekEnd)\">{{day.day}}</span>"  +
             "        </td>\n" +
             "      </tr>\n" +
